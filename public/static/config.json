@@ -1,0 +1,36 @@
+{
+  "version": "1.0.0",
+  "lasttime": "2022-08-29 15:33:09",
+  "author": "申龙",
+  "className": "tables",
+  "module": [
+    {
+      "classId": "idm.component.tables.text",
+      "comName": "文本",
+      "className": "IText",
+      "comType": "common",
+      "comLangue": "vue"
+    },
+    {
+      "classId": "idm.component.tables.sorttable",
+      "comName": "排序图表",
+      "className": "ISortTable",
+      "comType": "common",
+      "comLangue": "vue"
+    },
+    {
+      "classId": "idm.component.tables.liquidwater",
+      "comName": "水球图表",
+      "className": "ILiquidWater",
+      "comType": "common",
+      "comLangue": "vue"
+    },
+    {
+      "classId": "idm.component.tables.grid",
+      "comName": "趋势宫格",
+      "className": "IGrid",
+      "comType": "common",
+      "comLangue": "vue"
+    }
+  ]
+}

@@ -1,0 +1,781 @@
+{
+    "classId": "idm.component.tables.liquidwater",
+    "comName": "水球图表",
+    "className": "ILiquidWater",
+    "comType": "common",
+    "comLangue": "vue",
+    "compositeAttr": [
+        {
+            "type": "input",
+            "layoutType": "inline",
+            "text": "唯一标识",
+            "bindKey": "ctrlId",
+            "disabled": true,
+            "default": "@[packageid]",
+            "desc": "",
+            "helpUrl": ""
+        },
+        {
+            "type": "group",
+            "text": "基本属性",
+            "desc": "提供设置组件能达到展示效果的基本属性设置信息",
+            "children": [
+                {
+                    "type": "radio",
+                    "styleType": "radio",
+                    "layoutType": "inline",
+                    "text": "显示搜索",
+                    "desc":"是否显示时间搜索器",
+                    "bindKey": "showTimeSearch",
+                    "default": true,
+                    "dictionary": [
+                        {
+                            "label": "是",
+                            "value": true
+                        },
+                        {
+                            "label": "否",
+                            "value": false
+                        }
+                    ]
+                },
+                {
+                    "type": "radio",
+                    "styleType": "radio",
+                    "layoutType": "inline",
+                    "text": "显示描述",
+                    "desc": "是否显示底部图表的描述信息",
+                    "bindKey": "showDescribe",
+                    "default": true,
+                    "dictionary": [
+                        {
+                            "label": "是",
+                            "value": true
+                        },
+                        {
+                            "label": "否",
+                            "value": false
+                        }
+                    ]
+                },
+                {
+                    "type": "select",
+                    "layoutType": "inline",
+                    "text": "显示模式",
+                    "bindKey": "showStyle",
+                    "desc":"设置组件展示方式，可设置为只展示左侧图表、只展示右侧图表或者左右图表都展示",
+                    "default": "3",
+                    "dictionary": [
+                        {
+                            "label": "只展示左侧图表",
+                            "value": "1"
+                        },
+                        {
+                            "label": "只展示右侧图表",
+                            "value": "2"
+                        },
+                        {
+                            "label": "左右图标都图表",
+                            "value": "3"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "type": "group",
+            "text": "左侧图表设置",
+            "desc": "点击？查看样式设置用法指南",
+            "helpUrl": "",
+            "children":[
+                {
+                    "type": "input",
+                    "layoutType": "inline",
+                    "text": "图表半径",
+                    "desc": "图的半径，可设置为百分比如50%或者像素值如100px",
+                    "bindKey": "radiusLeft",
+                    "default": "80%"
+                },
+                {
+                    "type": "input",
+                    "layoutType": "inline",
+                    "text": "图表描述",
+                    "desc": "图表总数，用于计算数据占该总数的百分比",
+                    "bindKey": "describeLeft",
+                    "default": "本月资产累计折旧（元）"
+                },
+                {
+                    "type": "radio",
+                    "styleType": "radio",
+                    "layoutType": "inline",
+                    "text": "显示标签",
+                    "desc":"图表是否显示数值标签",
+                    "bindKey": "showLabelLeft",
+                    "default": true,
+                    "dictionary": [
+                        {
+                            "label": "是",
+                            "value": true
+                        },
+                        {
+                            "label": "否",
+                            "value": false
+                        }
+                    ]
+                },
+                {
+                    "type": "radio",
+                    "styleType": "radio",
+                    "layoutType": "inline",
+                    "text": "显示轮廓",
+                    "desc":"图表是否显示外部轮廓",
+                    "bindKey": "showOutlineLeft",
+                    "default": true,
+                    "dictionary": [
+                        {
+                            "label": "是",
+                            "value": true
+                        },
+                        {
+                            "label": "否",
+                            "value": false
+                        }
+                    ]
+                },
+                {
+                    "type": "colorPicker",
+                    "layoutType": "inline",
+                    "text": "图表颜色",
+                    "bindKey": "tableColorLeft",
+                    "placeholder": "请选择颜色",
+                    "default": {}
+                },
+                {
+                    "type": "colorPicker",
+                    "layoutType": "inline",
+                    "text": "背景色",
+                    "bindKey": "tableBgColorLeft",
+                    "placeholder": "请选择颜色",
+                    "desc": "图表背景色",
+                    "default": {}
+                },
+                {
+                    "type": "group",
+                    "text": "标签属性",
+                    "display": "@[showLabelLeft]",
+                    "children":[
+                        {
+                            "type": "inputNumber",
+                            "layoutType": "inline",
+                            "text": "字体大小",
+                            "desc": "设置图表数值标签的字体大小",
+                            "bindKey": "labelFontSizeLeft",
+                            "default": ""
+                        },
+                        {
+                            "type": "colorPicker",
+                            "layoutType": "inline",
+                            "text": "字体颜色",
+                            "bindKey": "labelFontColorLeft",
+                            "placeholder": "请选择颜色",
+                            "default": {}
+                        }
+                    ]
+                },
+                {
+                    "type": "group",
+                    "text": "外轮廓属性",
+                    "display": "@[showOutlineLeft]",
+                    "children":[
+                        {
+                            "type": "inputNumber",
+                            "layoutType": "inline",
+                            "text": "轮廓间距",
+                            "desc": "外部轮廓与内部图表的距离",
+                            "bindKey": "borderDistanceLeft",
+                            "default": 0
+                        },
+                        {
+                            "type": "inputNumber",
+                            "layoutType": "inline",
+                            "text": "轮廓宽度",
+                            "bindKey": "borderWidthLeft",
+                            "default": 3
+                        },
+                        {
+                            "type": "colorPicker",
+                            "layoutType": "inline",
+                            "text": "轮廓颜色",
+                            "bindKey": "borderColorLeft",
+                            "placeholder": "请选择颜色",
+                            "default": {}
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "type": "group",
+            "text": "右侧图表设置",
+            "desc": "点击？查看样式设置用法指南",
+            "helpUrl": "",
+            "children":[
+                {
+                    "type": "input",
+                    "layoutType": "inline",
+                    "text": "图表半径",
+                    "desc": "图的半径，可设置为百分比如50%或者像素值如100px",
+                    "bindKey": "radiusRight",
+                    "default": "80%"
+                },
+                {
+                    "type": "input",
+                    "layoutType": "inline",
+                    "text": "图表描述",
+                    "desc": "图表总数，用于计算数据占该总数的百分比",
+                    "bindKey": "describeRight",
+                    "default": "本月资产净值（元）"
+                },
+                {
+                    "type": "radio",
+                    "styleType": "radio",
+                    "layoutType": "inline",
+                    "text": "显示标签",
+                    "desc":"图表是否显示数值标签",
+                    "bindKey": "showLabelRight",
+                    "default": true,
+                    "dictionary": [
+                        {
+                            "label": "是",
+                            "value": true
+                        },
+                        {
+                            "label": "否",
+                            "value": false
+                        }
+                    ]
+                },
+                {
+                    "type": "radio",
+                    "styleType": "radio",
+                    "layoutType": "inline",
+                    "text": "显示轮廓",
+                    "desc":"图表是否显示外部轮廓",
+                    "bindKey": "showOutlineRight",
+                    "default": true,
+                    "dictionary": [
+                        {
+                            "label": "是",
+                            "value": true
+                        },
+                        {
+                            "label": "否",
+                            "value": false
+                        }
+                    ]
+                },
+                {
+                    "type": "colorPicker",
+                    "layoutType": "inline",
+                    "text": "图表颜色",
+                    "bindKey": "tableColorRight",
+                    "placeholder": "请选择颜色",
+                    "default": {}
+                },
+                {
+                    "type": "colorPicker",
+                    "layoutType": "inline",
+                    "text": "背景色",
+                    "bindKey": "tableBgColorRight",
+                    "placeholder": "请选择颜色",
+                    "desc": "图表背景色",
+                    "default": {}
+                },
+                {
+                    "type": "group",
+                    "text": "标签属性",
+                    "display": "@[showLabelRight]",
+                    "children":[
+                        {
+                            "type": "inputNumber",
+                            "layoutType": "inline",
+                            "text": "字体大小",
+                            "desc": "设置图表数值标签的字体大小",
+                            "bindKey": "labelFontSizeRight",
+                            "default": ""
+                        },
+                        {
+                            "type": "colorPicker",
+                            "layoutType": "inline",
+                            "text": "字体颜色",
+                            "bindKey": "labelFontColorRight",
+                            "placeholder": "请选择颜色",
+                            "default": {}
+                        }
+                    ]
+                },
+                {
+                    "type": "group",
+                    "text": "外轮廓属性",
+                    "display": "@[showOutlineRight]",
+                    "children":[
+                        {
+                            "type": "inputNumber",
+                            "layoutType": "inline",
+                            "text": "轮廓间距",
+                            "desc": "外部轮廓与内部图表的距离",
+                            "bindKey": "borderDistanceRight",
+                            "default": 0
+                        },
+                        {
+                            "type": "inputNumber",
+                            "layoutType": "inline",
+                            "text": "轮廓宽度",
+                            "bindKey": "borderWidthRight",
+                            "default": 3
+                        },
+                        {
+                            "type": "colorPicker",
+                            "layoutType": "inline",
+                            "text": "轮廓颜色",
+                            "bindKey": "borderColorRight",
+                            "placeholder": "请选择颜色",
+                            "default": {}
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "type": "group",
+            "text": "容器样式设置",
+            "desc": "点击？查看样式设置用法指南",
+            "helpUrl": "",
+            "children": [
+                {
+                    "type": "inlineGroup",
+                    "text": "宽高",
+                    "children": [
+                        {
+                            "type": "input",
+                            "layoutType": "block",
+                            "text": "宽",
+                            "desc": "填写auto则为自适应，或者使用px、%、vw等单位，比如100%、100px、100vw等等",
+                            "bindKey": "width",
+                            "width": "60px",
+                            "default": "100%"
+                        },
+                        {
+                            "type": "input",
+                            "layoutType": "block",
+                            "text": "高",
+                            "desc": "填写auto则为自适应，或者使用px、%、vh等单位，比如100%、100px、100vh等等",
+                            "bindKey": "height",
+                            "width": "60px",
+                            "default": "auto"
+                        }
+                    ]
+                },
+                {
+                    "type": "group",
+                    "text": "背景设置",
+                    "desc": "点击？查看背景设置用法指南",
+                    "helpUrl": "",
+                    "children": [
+                        {
+                            "type": "colorPicker",
+                            "layoutType": "inline",
+                            "text": "背景色",
+                            "bindKey": "bgColor",
+                            "placeholder": "请选择颜色",
+                            "default": {}
+                        },
+                        {
+                            "type": "uploadImage",
+                            "layoutType": "inline",
+                            "text": "背景图片",
+                            "bindKey": "bgImgUrl",
+                            "placeholder": "可输入图片地址或直接上传"
+                        },
+                        {
+                            "type": "inputNumberUnit",
+                            "layoutType": "inline",
+                            "text": "横向偏移",
+                            "bindKey": "positionX",
+                            "dictionary": [
+                                {
+                                    "label": "px",
+                                    "value": "px"
+                                },
+                                {
+                                    "label": "%",
+                                    "value": "%"
+                                },
+                                {
+                                    "label": "em",
+                                    "value": "em"
+                                }
+                            ],
+                            "display": "@[bgImgUrl]"
+                        },
+                        {
+                            "type": "inputNumberUnit",
+                            "layoutType": "inline",
+                            "text": "纵向偏移",
+                            "bindKey": "positionY",
+                            "dictionary": [
+                                {
+                                    "label": "px",
+                                    "value": "px"
+                                },
+                                {
+                                    "label": "%",
+                                    "value": "%"
+                                },
+                                {
+                                    "label": "em",
+                                    "value": "em"
+                                }
+                            ],
+                            "display": "@[bgImgUrl]"
+                        },
+                        {
+                            "type": "radio",
+                            "layoutType": "block",
+                            "text": "背景大小",
+                            "bindKey": "bgSize",
+                            "dictionary": [
+                                {
+                                    "label": "裁切显示",
+                                    "value": "cover"
+                                },
+                                {
+                                    "label": "完全显示",
+                                    "value": "contain"
+                                },
+                                {
+                                    "label": "自定义",
+                                    "value": "custom"
+                                }
+                            ],
+                            "display": "@[bgImgUrl]"
+                        },
+                        {
+                            "type": "inputNumberUnit",
+                            "layoutType": "inline",
+                            "text": "宽度",
+                            "bindKey": "bgSizeWidth",
+                            "dictionary": [
+                                {
+                                    "label": "px",
+                                    "value": "px"
+                                },
+                                {
+                                    "label": "%",
+                                    "value": "%"
+                                },
+                                {
+                                    "label": "em",
+                                    "value": "em"
+                                }
+                            ],
+                            "display": "@[bgSize=='custom']"
+                        },
+                        {
+                            "type": "inputNumberUnit",
+                            "layoutType": "inline",
+                            "text": "高度",
+                            "bindKey": "bgSizeHeight",
+                            "dictionary": [
+                                {
+                                    "label": "px",
+                                    "value": "px"
+                                },
+                                {
+                                    "label": "%",
+                                    "value": "%"
+                                },
+                                {
+                                    "label": "em",
+                                    "value": "em"
+                                }
+                            ],
+                            "display": "@[bgSize=='custom']"
+                        },
+                        {
+                            "type": "radio",
+                            "layoutType": "block",
+                            "text": "平铺模式",
+                            "bindKey": "bgRepeat",
+                            "dictionary": [
+                                {
+                                    "label": "双向重复",
+                                    "value": "repeat"
+                                },
+                                {
+                                    "label": "水平重复",
+                                    "value": "repeat-x"
+                                },
+                                {
+                                    "label": "垂直重复",
+                                    "value": "repeat-y"
+                                },
+                                {
+                                    "label": "不重复",
+                                    "value": "no-repeat"
+                                },
+                                {
+                                    "label": "继承",
+                                    "value": "inherit"
+                                }
+                            ],
+                            "display": "@[bgImgUrl]"
+                        },
+                        {
+                            "type": "radio",
+                            "layoutType": "inline",
+                            "text": "背景模式",
+                            "bindKey": "bgAttachment",
+                            "dictionary": [
+                                {
+                                    "label": "固定",
+                                    "value": "fixed"
+                                },
+                                {
+                                    "label": "滚动",
+                                    "value": "scroll"
+                                },
+                                {
+                                    "label": "继承",
+                                    "value": "inherit"
+                                }
+                            ],
+                            "display": "@[bgImgUrl]"
+                        }
+                    ]
+                },
+                {
+                    "type": "font",
+                    "layoutType": "block",
+                    "text": "文字",
+                    "bindKey": "font"
+                },
+                {
+                    "type": "box",
+                    "layoutType": "block",
+                    "text": "内外边距",
+                    "bindKey": "box"
+                },
+                {
+                    "type": "border",
+                    "layoutType": "block",
+                    "text": "边框",
+                    "bindKey": "border"
+                }
+            ]
+        },
+        {
+            "type": "table",
+            "text": "主题设置",
+            "desc": "点击？查看主题设置用法指南",
+            "bindKey": "themeList",
+            "tabText": "主题[index]",
+            "default":[
+                {
+                    "key": "blue",
+                    "mainColor": {
+                        "hex": "#0073CA",
+                        "hex8": "#0073CAFF"
+                    },
+                    "minorColor": {
+                        "hex": "#329cec",
+                        "hex8": "#329cecFF"
+                    }
+                },
+                {
+                    "key": "red",
+                    "mainColor": {
+                        "hex": "#E21A1A",
+                        "hex8": "#E21A1AFF"
+                    },
+                    "minorColor": {
+                        "hex": "#f87373",
+                        "hex8": "#f87373FF"
+                    }
+                },
+                {
+                    "key": "green",
+                    "mainColor": {
+                        "hex": "#0EAF64",
+                        "hex8": "#0EAF64FF"
+                    },
+                    "minorColor": {
+                        "hex": "#38e996",
+                        "hex8": "#38e996FF"
+                    }
+                }
+            ],
+            "children": [
+                {
+                    "type": "select",
+                    "layoutType": "inline",
+                    "text": "主题标识",
+                    "bindKey": "key",
+                    "desc":"用于设置主题的标识，此项需要搭配自定义开发切换主题的功能，例如：蓝色标识为blue，用户切换主题的时候存储到数据库中的标识为blue，则这里选择blue",
+                    "default":"",
+                    "placeholder":"例如：blue",
+                    "ctrlAttrObject": {
+                        "mode": "combobox"
+                    },
+                    "dictionary": [
+                        {
+                            "label": "red",
+                            "value": "red"
+                        },
+                        {
+                            "label": "green",
+                            "value": "green"
+                        },
+                        {
+                            "label": "blue",
+                            "value": "blue"
+                        }
+                    ]
+                },
+                {
+                    "type": "colorPicker",
+                    "layoutType": "inline",
+                    "text": "主要颜色",
+                    "bindKey": "mainColor",
+                    "desc":"主题的主要颜色",
+                    "placeholder": "请选择颜色",
+                    "display":"@[key]"
+                },
+                {
+                    "type": "colorPicker",
+                    "layoutType": "inline",
+                    "text": "次要颜色",
+                    "bindKey": "minorColor",
+                    "desc": "主题的次要颜色，作用于菜单鼠标悬浮色、选中菜单颜色",
+                    "placeholder": "请选择颜色",
+                    "display": "@[key]"
+                },
+                {
+                    "type": "uploadImage",
+                    "layoutType": "inline",
+                    "text": "背景图片",
+                    "bindKey": "bgImgSrc",
+                    "default": ""
+                }
+            ]
+        },
+        {
+            "type": "group",
+            "text": "高级",
+            "desc": "点击？查看高级设置用法指南",
+            "children": [
+                {
+                    "type": "group",
+                    "text": "适配设置",
+                    "desc":"通过设置属性来适配移动端页面尺寸",
+                    "children": [
+                        {
+                            "type": "inputNumber",
+                            "layoutType": "inline",
+                            "text": "基准值",
+                            "desc": "此属性用于标记当前组件在显示效果最完美情况下的宽度大小（px），例如：此组件显示效果最佳宽度为414px，则此处设置为414即可，如果此组件最佳效果为当前配置的屏幕宽（px）的一半则只需要除以2即可。",
+                            "bindKey": "baseSize",
+                            "default": 414
+                        },
+                        {
+                            "type": "inputNumber",
+                            "layoutType": "inline",
+                            "text": "适配比例",
+                            "desc": "与基准值配合使用，如果在实际预览屏幕宽为基准值的两倍，则此组件所有可适配的内容都会基于此处设置的适配比例相对应的进行放大缩小，例如此处设置1.2，则会相对应的放大至1.2倍",
+                            "bindKey": "adaptationRatio",
+                            "default": 1.2
+                        }
+                    ]
+                },
+                {
+                    "type": "group",
+                    "text": "左侧图表数据源",
+                    "children":[
+                        {
+                            "type": "dataSourceSelect",
+                            "layoutType": "inline",
+                            "text": "数据源",
+                            "bindKey": "dataSourceLeft"
+                        },
+                        {
+                            "type": "group",
+                            "text": "字段设置",
+                            "children":[
+                                {
+                                    "type": "dataSourceFiledSelect",
+                                    "layoutType": "inline",
+                                    "text": "数值字段",
+                                    "bindKey": "dataFieldValueLeft",
+                                    "default": "value",
+                                    "ctrlAttrObject": {
+                                        "dataSourceBindkey": "dataSourceLeft"
+                                    }
+                                },
+                                {
+                                    "type": "dataSourceFiledSelect",
+                                    "layoutType": "inline",
+                                    "text": "总数字段",
+                                    "desc": "用于计算当前数值占比多少",
+                                    "bindKey": "dataFieldTotalLeft",
+                                    "default": "total",
+                                    "ctrlAttrObject": {
+                                        "dataSourceBindkey": "dataSourceLeft"
+                                    }
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "type": "group",
+                    "text": "右侧图表数据源",
+                    "children":[
+                        {
+                            "type": "dataSourceSelect",
+                            "layoutType": "inline",
+                            "text": "数据源",
+                            "bindKey": "dataSourceRight"
+                        },
+                        {
+                            "type": "group",
+                            "text": "字段设置",
+                            "children":[
+                                {
+                                    "type": "dataSourceFiledSelect",
+                                    "layoutType": "inline",
+                                    "text": "数值字段",
+                                    "bindKey": "dataFieldValueRight",
+                                    "default": "value",
+                                    "ctrlAttrObject": {
+                                        "dataSourceBindkey": "dataSourceRight"
+                                    }
+                                },
+                                {
+                                    "type": "dataSourceFiledSelect",
+                                    "layoutType": "inline",
+                                    "text": "总数字段",
+                                    "desc": "用于计算当前数值占比多少",
+                                    "bindKey": "dataFieldTotalRight",
+                                    "default": "total",
+                                    "ctrlAttrObject": {
+                                        "dataSourceBindkey": "dataSourceRight"
+                                    }
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}
